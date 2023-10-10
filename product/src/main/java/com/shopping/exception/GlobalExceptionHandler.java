@@ -1,0 +1,17 @@
+package com.shopping.exception;
+
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+	@ExceptionHandler(value = ProductAlreadyExistsException.class)
+	    public ResponseEntity<String> ProductAlreadyExists(ProductAlreadyExistsException product){
+	    	return new ResponseEntity<String>("Product already exist,Please try again",HttpStatus.CONFLICT);
+	}
+	}
